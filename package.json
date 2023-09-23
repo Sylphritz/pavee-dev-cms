@@ -8,17 +8,33 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxt/test-utils": "^3.7.3",
+    "@vitest/ui": "^0.34.5",
+    "@vue/test-utils": "^2.4.1",
     "autoprefixer": "^10.4.16",
+    "drizzle-kit": "^0.19.13",
+    "happy-dom": "^12.1.6",
     "nuxt": "^3.7.3",
     "postcss": "^8.4.30",
     "sass": "^1.68.0",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "vitest": "^0.34.5",
+    "wrangler": "^3.9.0"
   },
   "dependencies": {
-    "@fontsource-variable/inter": "^5.0.8"
+    "@fontsource-variable/inter": "^5.0.8",
+    "@pinia/nuxt": "^0.4.11",
+    "@vee-validate/i18n": "^4.11.6",
+    "@vee-validate/rules": "^4.11.6",
+    "better-sqlite3": "^8.6.0",
+    "drizzle-orm": "^0.28.6",
+    "firebase": "^10.4.0",
+    "pinia": "^2.1.6",
+    "vee-validate": "^4.11.6"
   }
 }

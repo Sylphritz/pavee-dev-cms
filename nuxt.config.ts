@@ -11,4 +11,9 @@ export default defineNuxtConfig({
   routeRules: {
     '/api/**': { cors: true },
   },
+  modules: ['@pinia/nuxt'],
+  pinia: {
+    autoImports: ['defineStore'],
+  },
+  test: true,
 })

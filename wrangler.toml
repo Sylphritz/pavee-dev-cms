@@ -1,0 +1,8 @@
+name = "pavee-dev-cms"
+compatibility_date = "2023-09-22"
+node_compat = true
+
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "paveedev-cms"
+database_id = "66670863-884c-43ed-ad3b-e5ffb476b40e"

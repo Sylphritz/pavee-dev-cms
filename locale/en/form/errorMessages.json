@@ -1,0 +1,16 @@
+{
+  "messages": {
+    "required": "{field} is required",
+    "alpha_spaces": "{field} must be alphanumeric and spaces",
+    "confirmed": "Passwords don't match",
+    "email": "{field} must be a valid email",
+    "min": "{field} must have at least 0:{min} characters",
+    "max": "{field} must have a maximum of 0:{max} characters"
+  },
+  "names": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirm": "Password Confirm"
+  }
+}

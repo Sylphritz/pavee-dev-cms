@@ -1,8 +1,12 @@
 <template>
-  <div>
-    <NuxtLink to="/">Login</NuxtLink>
-    <NuxtLink to="/about">About</NuxtLink>
-    <slot />
+  <div
+    class="flex flex-col min-h-screen overflow-auto bg-gradient-to-b from-purple-100 to-gray-100"
+  >
+    <LayoutStaticHeader />
+    <div class="flex-grow">
+      <slot />
+    </div>
+    <LayoutStaticFooter />
   </div>
 </template>
 
