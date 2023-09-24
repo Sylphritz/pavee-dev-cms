@@ -10,6 +10,12 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const route = useRoute()
+
+useHead({
+  title: route.meta.title,
+})
+</script>
 
 <style></style>

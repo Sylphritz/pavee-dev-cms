@@ -55,6 +55,16 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import useUserStore from '@/stores/user'
+
+definePageMeta({
+  protected: true,
+})
+
+const userStore = useUserStore()
+
+console.log(userStore.isLoggedIn)
+</script>
 
 <style></style>

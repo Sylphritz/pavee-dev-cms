@@ -3,7 +3,7 @@
     <label
       v-if="label"
       :for="name"
-      class="block mb-1 pb-1 tracking-widest uppercase font-thin"
+      class="block mb-1 pb-1 tracking-widest uppercase"
       >{{ label }}</label
     >
     <FormInput :name="name" :type="type" :rules="rules" />
