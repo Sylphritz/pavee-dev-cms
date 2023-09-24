@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth'
 
@@ -22,6 +23,12 @@ export default defineStore('user', () => {
     isLoggedIn.value = true
   }
 
+  async function login(values: Record<string, any>) {
+    await signInWithEmailAndPassword($auth, values.email, values.password)
+    isLoggedIn.value = true
+    useRouter().push('/')
+  }
+
   async function logout() {
     await signOut($auth)
     isLoggedIn.value = false
@@ -31,6 +38,7 @@ export default defineStore('user', () => {
   return {
     isLoggedIn,
     register,
+    login,
     logout,
   }
 })
