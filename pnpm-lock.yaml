@@ -22,16 +22,13 @@ dependencies:
     version: 8.6.0
   drizzle-orm:
     specifier: ^0.28.6
-    version: 0.28.6(better-sqlite3@8.6.0)
+    version: 0.28.6(@types/better-sqlite3@7.6.5)(better-sqlite3@8.6.0)
   firebase:
     specifier: ^10.4.0
     version: 10.4.0
   pinia:
     specifier: ^2.1.6
     version: 2.1.6(vue@3.3.4)
-  pinia-plugin-persistedstate:
-    specifier: ^3.2.0
-    version: 3.2.0(pinia@2.1.6)
   vee-validate:
     specifier: ^4.11.6
     version: 4.11.6(vue@3.3.4)
@@ -43,6 +40,9 @@ devDependencies:
   '@nuxt/test-utils':
     specifier: ^3.7.3
     version: 3.7.3(vitest@0.34.5)(vue@3.3.4)
+  '@types/better-sqlite3':
+    specifier: ^7.6.5
+    version: 7.6.5
   '@vitest/ui':
     specifier: ^0.34.5
     version: 0.34.5(vitest@0.34.5)
@@ -2472,6 +2472,11 @@ packages:
       minimatch: 9.0.3
     dev: true
 
+  /@types/better-sqlite3@7.6.5:
+    resolution: {integrity: sha512-H3ZUx89KiPhYa9nalUXVVStSUFHuzYxt4yoazufpTTYW9rVUCzhh02V8CH2C8nE4libnK0UgFq5DFIe0DOhqow==}
+    dependencies:
+      '@types/node': 20.6.3
+
   /@types/chai-subset@1.3.3:
     resolution: {integrity: sha512-frBecisrNGz+F4T6bcc+NLeolfiojh5FxW2klu669+8BARtyQv2C/GkNW6FUodVe4BroGMP/wER/YDGc7rEllw==}
     dependencies:
@@ -3859,7 +3864,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.28.6(better-sqlite3@8.6.0):
+  /drizzle-orm@0.28.6(@types/better-sqlite3@7.6.5)(better-sqlite3@8.6.0):
     resolution: {integrity: sha512-yBe+F9htrlYER7uXgDJUQsTHFoIrI5yMm5A0bg0GiZ/kY5jNXTWoEy4KQtg35cE27sw1VbgzoMWHAgCckUUUww==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -3921,6 +3926,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
+      '@types/better-sqlite3': 7.6.5
       better-sqlite3: 8.6.0
     dev: false
 
@@ -6268,14 +6274,6 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /pinia-plugin-persistedstate@3.2.0(pinia@2.1.6):
-    resolution: {integrity: sha512-tZbNGf2vjAQcIm7alK40sE51Qu/m9oWr+rEgNm/2AWr1huFxj72CjvpQcIQzMknDBJEkQznCLAGtJTIcLKrKdw==}
-    peerDependencies:
-      pinia: ^2.0.0
-    dependencies:
-      pinia: 2.1.6(vue@3.3.4)
-    dev: false
 
   /pinia@2.1.6(vue@3.3.4):
     resolution: {integrity: sha512-bIU6QuE5qZviMmct5XwCesXelb5VavdOWKWaB17ggk++NUwQWWbP5YnsONTk3b752QkW9sACiR81rorpeOMSvQ==}

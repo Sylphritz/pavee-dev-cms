@@ -25,3 +25,7 @@ logs
 
 # Cloudflare
 .wrangler
+
+# SQLite
+sqlite.db
+sqlite.db-*
