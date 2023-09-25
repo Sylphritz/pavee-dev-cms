@@ -8,7 +8,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   // Check the initial auth state on application load
   if (!$firebaseInitialized.value) {
-    console.log('Checking auth state')
     await $checkAuthState()
   }
 

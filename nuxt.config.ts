@@ -16,4 +16,13 @@ export default defineNuxtConfig({
     autoImports: ['defineStore'],
   },
   test: true,
+  runtimeConfig: {
+    app: {
+      firebaseApiKey: '',
+      firebaseAuthDomain: '',
+      firebaseProjectId: '',
+      firebaseAppId: '',
+      firebaseMeasurementId: '',
+    },
+  },
 })
