@@ -2,11 +2,14 @@
   <ClientOnly>
     <div
       v-if="!!$auth.currentUser"
-      class="flex flex-col min-h-screen overflow-auto bg-gradient-to-b from-purple-100 to-gray-100"
+      class="flex flex-col h-screen overflow-hidden"
     >
       <LayoutDefaultHeader />
-      <div class="flex-grow">
-        <slot />
+      <div class="flex-grow flex flex-row overflow-hidden">
+        <LayoutDefaultSidebar />
+        <div class="flex-grow h-full overflow-auto">
+          <slot />
+        </div>
       </div>
     </div>
   </ClientOnly>

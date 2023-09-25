@@ -1,5 +1,6 @@
 <template>
-  <div class="py-3 px-6 flex flex-row justify-end gap-3">
+  <div class="py-3 px-6 flex flex-row justify-end gap-3 shadow bg-white">
+    <LayoutDefaultHeaderUserDisplay />
     <a href="#" @click.prevent="logout">Logout</a>
   </div>
 </template>
