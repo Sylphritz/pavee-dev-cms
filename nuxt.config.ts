@@ -17,6 +17,12 @@ export default defineNuxtConfig({
   },
   test: true,
   runtimeConfig: {
+    s3Endpoint: '',
+    s3AccountId: '',
+    s3CloudFlareToken: '',
+    s3AccessKey: '',
+    s3SecretKey: '',
+    s3Bucket: '',
     app: {
       firebaseApiKey: '',
       firebaseAuthDomain: '',

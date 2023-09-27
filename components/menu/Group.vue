@@ -3,7 +3,7 @@
     <MenuItem to="/">Dashboard</MenuItem>
     <MenuItem to="/posts">Posts</MenuItem>
     <MenuItem to="/categories">Categories</MenuItem>
-    <MenuItem to="/images">Images</MenuItem>
+    <MenuItem to="/media">Media</MenuItem>
     <MenuItem to="/messages">Messages</MenuItem>
   </ul>
 </template>
