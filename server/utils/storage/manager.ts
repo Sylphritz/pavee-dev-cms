@@ -7,14 +7,14 @@ import {
 } from '@aws-sdk/client-s3'
 import { MultiPartData } from 'h3'
 
-const config = useRuntimeConfig()
+// const config = useRuntimeConfig()
 
 const client = new S3Client({
   region: 'auto',
-  endpoint: config.s3Endpoint,
+  endpoint: process.env.NUXT_S3_ENDPOINT as string,
   credentials: {
-    accessKeyId: config.s3AccessKey,
-    secretAccessKey: config.s3SecretKey,
+    accessKeyId: process.env.NUXT_S3_ACCESS_KEY as string,
+    secretAccessKey: process.env.NUXT_S3_SECRET_KEY as string,
   },
 })
 
@@ -24,7 +24,7 @@ export const listObjects = async (
   limit: number = 1000
 ) => {
   const options: ListObjectsV2CommandInput = {
-    Bucket: config.s3Bucket,
+    Bucket: process.env.NUXT_S3_BUCKET,
     Prefix: location,
     MaxKeys: limit,
   }
@@ -42,7 +42,7 @@ export const addObject = async (userId: string, file: MultiPartData) => {
 
   const input: PutObjectCommandInput = {
     Body: file.data,
-    Bucket: config.s3Bucket,
+    Bucket: process.env.NUXT_S3_BUCKET,
     Key: `${userId}/${new Date().getTime()}_${file.filename}`,
     ContentType: file.type,
   }
