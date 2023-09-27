@@ -1,4 +1,4 @@
-import { listObjects } from '@/utils/storage/manager'
+import { listObjects } from '~/server/utils/storage/manager'
 
 export default defineEventHandler(async (event) => {
   console.log(process.env.DB)

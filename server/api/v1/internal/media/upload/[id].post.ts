@@ -1,4 +1,4 @@
-import { addObject } from '@/utils/storage/manager'
+import { addObject } from '~/server/utils/storage/manager'
 
 export default defineEventHandler(async (event) => {
   const files = await readMultipartFormData(event)
