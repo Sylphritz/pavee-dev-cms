@@ -1,6 +1,7 @@
 import { listObjects } from '@/utils/storage/manager'
 
 export default defineEventHandler(async (event) => {
+  console.log(process.env.DB)
   const query = getQuery(event)
 
   if (event.context.params?.id) {

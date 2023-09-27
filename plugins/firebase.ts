@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const appConfig = useRuntimeConfig().app
+  const appConfig = useRuntimeConfig().public
 
   const firebaseConfig = {
     apiKey: appConfig.firebaseApiKey,

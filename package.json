@@ -29,11 +29,12 @@
     "sass": "^1.68.0",
     "tailwindcss": "^3.3.3",
     "vitest": "^0.34.5",
-    "wrangler": "^3.8.0"
+    "wrangler": "3.8.0"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.418.0",
     "@fontsource-variable/inter": "^5.0.8",
+    "@libsql/client": "^0.3.5",
     "@pinia/nuxt": "^0.4.11",
     "@vee-validate/i18n": "^4.11.6",
     "@vee-validate/rules": "^4.11.6",

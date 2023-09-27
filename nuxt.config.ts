@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     s3AccessKey: '',
     s3SecretKey: '',
     s3Bucket: '',
-    app: {
+    public: {
       firebaseApiKey: '',
       firebaseAuthDomain: '',
       firebaseProjectId: '',
