@@ -1,3 +1,7 @@
+import { createResolver } from 'nuxt/kit'
+
+const { resolve } = createResolver(import.meta.url)
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -17,12 +21,9 @@ export default defineNuxtConfig({
   },
   test: true,
   runtimeConfig: {
-    s3Endpoint: '',
-    s3AccountId: '',
-    s3CloudFlareToken: '',
-    s3AccessKey: '',
-    s3SecretKey: '',
-    s3Bucket: '',
+    dbDir: resolve('./server/db'),
+    tursoDbUrl: process.env.NUXT_TURSO_DB_URL || '',
+    tursoDbToken: process.env.NUXT_TURSO_DB_TOKEN || '',
     public: {
       firebaseApiKey: process.env.NUXT_PUBLIC_FIREBASE_API_KEY || '',
       firebaseAuthDomain: process.env.NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN || '',
