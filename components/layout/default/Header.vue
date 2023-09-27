@@ -10,5 +10,3 @@ import useUserStore from '@/stores/user'
 
 const { logout } = useUserStore()
 </script>
-
-<style></style>
