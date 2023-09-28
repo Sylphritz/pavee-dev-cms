@@ -7,6 +7,7 @@
     class="block w-full p-3 bg-gray-100 border-2 rounded-md border-purple-200 focus:outline-none focus:border-purple-300 disabled:bg-gray-200"
     :class="{ 'border-red-400': errorMessage }"
     @blur="() => validate()"
+    @change="$emit('change', value)"
   />
   <div class="py-1 text-red-400">{{ errorMessage }}</div>
 </template>
@@ -27,6 +28,8 @@ const props = defineProps({
     type: String,
   },
 })
+
+defineEmits(['change'])
 
 const { value, errorMessage, validate } = useField(
   () => props.name,

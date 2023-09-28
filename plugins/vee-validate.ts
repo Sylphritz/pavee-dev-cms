@@ -7,6 +7,7 @@ import {
   email,
   min,
   max,
+  integer,
 } from '@vee-validate/rules'
 import en from '@/locale/en/form/errorMessages.json'
 
@@ -17,6 +18,7 @@ export default defineNuxtPlugin(() => {
   defineRule('email', email)
   defineRule('min', min)
   defineRule('max', max)
+  defineRule('integer', integer)
 
   configure({
     generateMessage: localize({
