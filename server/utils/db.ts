@@ -7,6 +7,7 @@ let _db: BetterSQLite3Database | LibSQLDatabase | null = null
 
 export const useDb = () => {
   if (!_db) {
+    console.log('Syllllll')
     if (process.env.NUXT_TURSO_DB_URL && process.env.NUXT_TURSO_DB_TOKEN) {
       // Production
       _db = drizzleTurso(
