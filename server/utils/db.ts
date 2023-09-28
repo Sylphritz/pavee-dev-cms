@@ -19,8 +19,7 @@ export const useDb = () => {
       )
     } else {
       // Local development
-      const { dbDir } = useRuntimeConfig()
-      const sqlite = new Database(join(dbDir, './db.sqlite'))
+      const sqlite = new Database('db.sqlite')
       _db = drizzle(sqlite)
     }
   }
