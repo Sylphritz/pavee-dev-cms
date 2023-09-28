@@ -2,6 +2,7 @@ import { drizzle, BetterSQLite3Database } from 'drizzle-orm/better-sqlite3'
 import { drizzle as drizzleTurso, LibSQLDatabase } from 'drizzle-orm/libsql'
 import Database from 'better-sqlite3'
 import { createClient } from '@libsql/client/http'
+import { join } from 'pathe'
 
 let _db: BetterSQLite3Database | LibSQLDatabase | null = null
 
@@ -17,7 +18,8 @@ export const useDb = () => {
       )
     } else {
       // Local development
-      const sqlite = new Database('sqlite.db')
+      const { dbDir } = useRuntimeConfig()
+      const sqlite = new Database(join(dbDir, './db.sqlite'))
       _db = drizzle(sqlite)
     }
   }
