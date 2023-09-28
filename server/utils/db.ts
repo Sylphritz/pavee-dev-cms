@@ -19,7 +19,7 @@ export const useDb = () => {
       )
     } else {
       // Local development
-      const sqlite = new Database('db.sqlite')
+      const sqlite = new Database('sqlite.db')
       _db = drizzle(sqlite)
     }
   }

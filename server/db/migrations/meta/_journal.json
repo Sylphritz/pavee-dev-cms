@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1695827439936,
-      "tag": "0000_chunky_golden_guardian",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1695876758258,
-      "tag": "0001_last_the_hand",
+      "when": 1695918881255,
+      "tag": "0000_gifted_spitfire",
       "breakpoints": true
     }
   ]
