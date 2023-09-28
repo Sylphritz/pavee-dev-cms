@@ -50,6 +50,8 @@ const pagination = reactive({
   perPage: 10,
 })
 
+// TODO: Functions for editing and deleting
+
 const { data, pending, error, refresh } = await useFetch('/api/v1/categories', {
   query: { ...pagination },
 })

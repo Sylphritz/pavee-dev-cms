@@ -9,15 +9,11 @@ export default defineNitroPlugin(async () => {
   const { dbDir } = useRuntimeConfig()
   const migrationsFolder = join(dbDir, './migrations')
 
-  if (
-    !process.dev &&
-    process.env.NUXT_TURSO_DB_URL &&
-    process.env.NUXT_TURSO_DB_TOKEN
-  ) {
-    const db = useDb() as BetterSQLite3Database
-    migrate(db, { migrationsFolder })
-  } else {
+  if (process.env.NUXT_TURSO_DB_URL && process.env.NUXT_TURSO_DB_TOKEN) {
     const db = useDb() as LibSQLDatabase
     libSqlMigrate(db, { migrationsFolder })
+  } else {
+    const db = useDb() as BetterSQLite3Database
+    migrate(db, { migrationsFolder })
   }
 })
