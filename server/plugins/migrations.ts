@@ -10,6 +10,7 @@ export default defineNitroPlugin(async () => {
   const migrationsFolder = join(dbDir, './migrations')
 
   if (process.env.NUXT_TURSO_DB_URL && process.env.NUXT_TURSO_DB_TOKEN) {
+    console.log('Applying migrations to Turso...')
     const db = useDb() as LibSQLDatabase
     libSqlMigrate(db, { migrationsFolder })
   } else {
