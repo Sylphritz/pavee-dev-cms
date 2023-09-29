@@ -22,7 +22,15 @@
         <th>Created At</th>
       </template>
       <tr
-        v-for="{ id, name, slug, description, sortOrder, createdAt } in data"
+        v-for="{
+          id,
+          name,
+          slug,
+          description,
+          sortOrder,
+          createdAt,
+          postCount,
+        } in data"
         :key="id"
       >
         <td>{{ id }}</td>
@@ -30,8 +38,7 @@
         <td>{{ name }}</td>
         <td>{{ slug }}</td>
         <td>{{ description }}</td>
-        <!-- TODO: Update the post count -->
-        <td>N/A</td>
+        <td>{{ postCount }}</td>
         <td>{{ createdAt }}</td>
       </tr>
     </Table>
@@ -44,6 +51,8 @@
 </template>
 
 <script lang="ts" setup>
+const { $auth } = useNuxtApp()
+
 const formOpen = ref(false)
 const pagination = reactive({
   page: 1,
@@ -53,7 +62,7 @@ const pagination = reactive({
 // TODO: Functions for editing and deleting
 
 const { data, pending, error, refresh } = await useFetch('/api/v1/categories', {
-  query: { ...pagination },
+  query: { userId: $auth.currentUser!.uid, ...pagination },
 })
 
 const reloadTable = () => {

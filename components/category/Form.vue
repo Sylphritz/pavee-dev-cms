@@ -45,6 +45,8 @@ import slugify from 'slugify'
 
 const emits = defineEmits(['close', 'category-added'])
 
+const { $auth } = useNuxtApp()
+
 const { handleSubmit, isSubmitting, resetForm, setFieldValue } = useForm({
   validationSchema: {
     name: 'required|max:48',
@@ -75,6 +77,7 @@ const submit = handleSubmit(async (values) => {
     await $fetch('/api/v1/categories', {
       method: 'POST',
       body: {
+        userId: $auth.currentUser!.uid,
         ...values,
       },
     })

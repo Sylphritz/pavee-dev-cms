@@ -1,5 +1,6 @@
 CREATE TABLE `categories` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`user_id` text DEFAULT '' NOT NULL,
 	`name` text NOT NULL,
 	`slug` text NOT NULL,
 	`description` text,
@@ -22,4 +23,6 @@ CREATE TABLE `posts` (
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `categories_name_unique` ON `categories` (`name`);--> statement-breakpoint
-CREATE UNIQUE INDEX `categories_slug_unique` ON `categories` (`slug`);
+CREATE UNIQUE INDEX `categories_slug_unique` ON `categories` (`slug`);--> statement-breakpoint
+CREATE INDEX `category_user_id_index` ON `categories` (`user_id`);--> statement-breakpoint
+CREATE INDEX `post_user_id_index` ON `posts` (`user_id`);

@@ -5,16 +5,18 @@ import { migrate as libSqlMigrate } from 'drizzle-orm/libsql/migrator'
 import { join } from 'pathe'
 import { LibSQLDatabase } from 'drizzle-orm/libsql'
 
+import * as schema from '@/server/db/schema'
+
 export default defineNitroPlugin(async () => {
   const { dbDir } = useRuntimeConfig()
   const migrationsFolder = join(dbDir, './migrations')
 
   if (process.env.NUXT_TURSO_DB_URL && process.env.NUXT_TURSO_DB_TOKEN) {
     console.log('Applying migrations to Turso...')
-    const db = useDb() as LibSQLDatabase
+    const db = useDb() as LibSQLDatabase<typeof schema>
     libSqlMigrate(db, { migrationsFolder })
   } else {
-    const db = useDb() as BetterSQLite3Database
+    const db = useDb() as BetterSQLite3Database<typeof schema>
     migrate(db, { migrationsFolder })
   }
 })

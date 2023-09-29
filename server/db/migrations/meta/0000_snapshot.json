@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "93d15c24-0b8e-4d31-99c8-53ebb5e0cb40",
+  "id": "34227e73-dda4-4629-a187-ef4ba73e4a36",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "categories": {
@@ -13,6 +13,14 @@
           "primaryKey": true,
           "notNull": true,
           "autoincrement": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
         },
         "name": {
           "name": "name",
@@ -73,6 +81,13 @@
             "slug"
           ],
           "isUnique": true
+        },
+        "category_user_id_index": {
+          "name": "category_user_id_index",
+          "columns": [
+            "user_id"
+          ],
+          "isUnique": false
         }
       },
       "foreignKeys": {},
@@ -148,7 +163,15 @@
           "default": "CURRENT_TIMESTAMP"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "post_user_id_index": {
+          "name": "post_user_id_index",
+          "columns": [
+            "user_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "posts_category_id_categories_id_fk": {
           "name": "posts_category_id_categories_id_fk",
