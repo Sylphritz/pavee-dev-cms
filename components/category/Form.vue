@@ -43,17 +43,29 @@
 import { useForm } from 'vee-validate'
 import slugify from 'slugify'
 
+const props = defineProps({
+  data: {
+    type: Object,
+  },
+})
 const emits = defineEmits(['close', 'category-added'])
 
 const { $auth } = useNuxtApp()
 
-const { handleSubmit, isSubmitting, resetForm, setFieldValue } = useForm({
-  validationSchema: {
-    name: 'required|max:48',
-    slug: 'required|max:48',
-    description: 'max:255',
-    sortOrder: 'integer',
-  },
+const { handleSubmit, isSubmitting, resetForm, setFieldValue, setValues } =
+  useForm({
+    validationSchema: {
+      name: 'required|max:48',
+      slug: 'required|max:48',
+      description: 'max:255',
+      sortOrder: 'integer',
+    },
+  })
+
+watchEffect(() => {
+  if (props.data) {
+    setValues(props.data)
+  }
 })
 
 const generateSlug = (value: string) => {
@@ -74,13 +86,16 @@ const closeAndReset = () => {
 
 const submit = handleSubmit(async (values) => {
   try {
-    await $fetch('/api/v1/categories', {
-      method: 'POST',
-      body: {
-        userId: $auth.currentUser!.uid,
-        ...values,
-      },
-    })
+    await $fetch(
+      props.data ? `/api/v1/categories/${props.data.id}` : '/api/v1/categories',
+      {
+        method: props.data ? 'PUT' : 'POST',
+        body: {
+          userId: $auth.currentUser!.uid,
+          ...values,
+        },
+      }
+    )
 
     resetForm()
     emits('category-added')

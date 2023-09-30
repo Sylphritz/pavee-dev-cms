@@ -1,3 +1,9 @@
+export interface PaginationProps {
+  page: number
+  perPage: number
+  total: number
+}
+
 export interface CategoryListInputProps {
   userId: string
   page: number

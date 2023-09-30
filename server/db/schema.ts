@@ -43,7 +43,9 @@ export const posts = sqliteTable(
     slug: text('slug').notNull(),
     metaDescription: text('meta_description').notNull(),
     body: text('body').notNull(),
-    categoryId: integer('category_id').references(() => categories.id),
+    categoryId: integer('category_id').references(() => categories.id, {
+      onDelete: 'cascade',
+    }),
     createdAt: text('created_at')
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
