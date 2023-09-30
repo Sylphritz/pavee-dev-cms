@@ -82,10 +82,10 @@ const formOpen = ref(false)
 const formData = ref<object | undefined>({})
 
 const page = ref(1)
-const perPage = 2
+const perPage = 10
 const totalItems = ref(0)
 
-const totalPages = computed(() => Math.ceil(totalItems.value / perPage))
+const totalPages = computed(() => Math.ceil(totalItems.value / perPage) || 1)
 
 const { data, pending, error, refresh, execute } = await useFetch(
   '/api/v1/categories',
