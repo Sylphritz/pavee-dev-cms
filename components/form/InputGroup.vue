@@ -6,7 +6,12 @@
       class="block mb-1 pb-1 tracking-widest uppercase"
       >{{ label }}</label
     >
-    <FormInput :name="name" :type="type" :rules="rules" />
+    <FormInput
+      :name="name"
+      :type="type"
+      :rules="rules"
+      @change="(value) => $emit('change', value)"
+    />
   </div>
 </template>
 
@@ -27,4 +32,6 @@ defineProps({
     type: String,
   },
 })
+
+defineEmits(['change'])
 </script>
