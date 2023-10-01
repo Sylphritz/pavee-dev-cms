@@ -4,7 +4,7 @@ export interface PaginationProps {
   total: number
 }
 
-export interface CategoryListInputProps {
+export interface DataListInputProps {
   userId: string
   page: number
   perPage: number
@@ -16,4 +16,13 @@ export interface CategoryCreateInputProps {
   slug: string
   description: string
   sortOrder: number
+}
+
+export interface PostCreateInputProps {
+  userId: string
+  title: string
+  slug: string
+  metaDescription: string
+  body: string
+  categoryId: number
 }

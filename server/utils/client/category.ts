@@ -1,12 +1,8 @@
 import { categories, posts } from '@/server/db/schema'
-import { CategoryCreateInputProps, CategoryListInputProps } from './types'
+import { CategoryCreateInputProps, DataListInputProps } from './types'
 import { eq, sql } from 'drizzle-orm'
 
-export const list = async ({
-  userId,
-  page,
-  perPage,
-}: CategoryListInputProps) => {
+export const list = async ({ userId, page, perPage }: DataListInputProps) => {
   const offset = (page - 1) * perPage
 
   return await useDb().query.categories.findMany({

@@ -1,4 +1,4 @@
-import { list, countTotal } from '@/server/utils/client/category'
+import { list, countTotal } from '@/server/utils/client/post'
 import { PaginationProps } from '@/server/utils/client/types'
 
 export default defineEventHandler(async (event) => {
