@@ -2,7 +2,11 @@ import { posts } from '@/server/db/schema'
 import { eq, sql } from 'drizzle-orm'
 import { DataListInputProps, PostCreateInputProps } from './types'
 
-export const list = async ({ userId, page, perPage }: DataListInputProps) => {
+export const listPosts = async ({
+  userId,
+  page,
+  perPage,
+}: DataListInputProps) => {
   const offset = (page - 1) * perPage
 
   return await useDb().query.posts.findMany({
@@ -19,11 +23,11 @@ export const list = async ({ userId, page, perPage }: DataListInputProps) => {
   })
 }
 
-export const create = async (newPostValues: PostCreateInputProps) => {
+export const createPost = async (newPostValues: PostCreateInputProps) => {
   await useDb().insert(posts).values(newPostValues)
 }
 
-export const update = async (
+export const updatePost = async (
   postId: number,
   newPostValues: PostCreateInputProps
 ) => {
@@ -33,11 +37,11 @@ export const update = async (
     .where(eq(posts.id, postId))
 }
 
-export const del = async (postId: number) => {
+export const deletePost = async (postId: number) => {
   await useDb().delete(posts).where(eq(posts.id, postId))
 }
 
-export const countTotal = async (): Promise<number> => {
+export const countTotalPosts = async (): Promise<number> => {
   return (
     await useDb().get<{ count: number }>(
       sql`SELECT count(*) as count FROM ${posts}`

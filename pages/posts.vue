@@ -2,9 +2,12 @@
   <div class="flex flex-row justify-between items-end mb-6">
     <h2 class="flex-grow m-0">Posts</h2>
     <div class="flex-none">
-      <button class="py-2 px-4 font-medium rounded-sm bg-purple-500 text-white">
+      <NuxtLink
+        class="py-2 px-4 font-medium rounded-sm bg-purple-500 text-white"
+        to="/posts/create"
+      >
         New Post
-      </button>
+      </NuxtLink>
     </div>
   </div>
   <div class="flex flex-col gap-2">

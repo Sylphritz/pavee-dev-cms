@@ -2,7 +2,11 @@ import { categories, posts } from '@/server/db/schema'
 import { CategoryCreateInputProps, DataListInputProps } from './types'
 import { eq, sql } from 'drizzle-orm'
 
-export const list = async ({ userId, page, perPage }: DataListInputProps) => {
+export const listCategories = async ({
+  userId,
+  page,
+  perPage,
+}: DataListInputProps) => {
   const offset = (page - 1) * perPage
 
   return await useDb().query.categories.findMany({
@@ -18,11 +22,13 @@ export const list = async ({ userId, page, perPage }: DataListInputProps) => {
   })
 }
 
-export const create = async (newCategoryValues: CategoryCreateInputProps) => {
+export const createCategory = async (
+  newCategoryValues: CategoryCreateInputProps
+) => {
   await useDb().insert(categories).values(newCategoryValues)
 }
 
-export const update = async (
+export const updateCategory = async (
   categoryId: number,
   newCategoryValues: CategoryCreateInputProps
 ) => {
@@ -32,11 +38,11 @@ export const update = async (
     .where(eq(categories.id, categoryId))
 }
 
-export const del = async (categoryId: number) => {
+export const deleteCategory = async (categoryId: number) => {
   await useDb().delete(categories).where(eq(categories.id, categoryId))
 }
 
-export const countTotal = async (): Promise<number> => {
+export const countTotalCategories = async (): Promise<number> => {
   return (
     await useDb().get<{ count: number }>(
       sql`SELECT count(*) as count FROM ${categories}`
