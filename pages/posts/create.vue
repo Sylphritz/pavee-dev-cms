@@ -1,7 +1,6 @@
 <template>
-  <div>CREATE</div>
+  <h2>New Post</h2>
+  <PostForm />
 </template>
 
 <script lang="ts" setup></script>
-
-<style></style>

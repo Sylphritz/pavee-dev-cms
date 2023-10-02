@@ -6,7 +6,23 @@
       class="block mb-1 pb-1 tracking-widest uppercase"
       >{{ label }}</label
     >
+    <FormTextArea
+      v-if="type === 'textarea'"
+      :name="name"
+      :rules="rules"
+      :rows="rows"
+      @change="(value) => $emit('change', value)"
+    />
+    <FormSelect
+      v-else-if="type === 'select'"
+      :name="name"
+      :rules="rules"
+      @change="(value) => $emit('change', value)"
+    >
+      <slot />
+    </FormSelect>
     <FormInput
+      v-else
       :name="name"
       :type="type"
       :rules="rules"
@@ -30,6 +46,9 @@ defineProps({
   },
   rules: {
     type: String,
+  },
+  rows: {
+    type: Number,
   },
 })
 

@@ -11,8 +11,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     pagination,
-    data: {
-      ...(await listPosts({ ...query })),
-    },
+    data: [...(await listPosts({ ...query }))],
   }
 })
