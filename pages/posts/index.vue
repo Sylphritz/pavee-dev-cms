@@ -3,7 +3,7 @@
     <h2 class="flex-grow m-0">Posts</h2>
     <div class="flex-none">
       <NuxtLink
-        class="py-2 px-4 font-medium rounded-sm bg-purple-500 text-white"
+        class="inline-block py-2 px-4 font-medium rounded-sm bg-purple-500 hover:bg-purple-600 active:bg-purple-700 text-white hover:text-white"
         to="/posts/create"
       >
         New Post
