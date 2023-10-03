@@ -10,6 +10,10 @@ export interface DataListInputProps {
   perPage: number
 }
 
+export interface DataInputProps {
+  itemId: number
+}
+
 export interface CategoryCreateInputProps {
   userId: string
   name: string

@@ -35,11 +35,12 @@
         <td>{{ updatedAt }}</td>
         <td>
           <div class="flex flex-row gap-2">
-            <button
-              class="p-2 rounded-sm bg-green-600 hover:bg-green-700 active:bg-green-800 text-white"
+            <NuxtLink
+              :to="`/posts/${id}`"
+              class="inline-block p-2 rounded-sm bg-green-600 hover:bg-green-700 active:bg-green-800 text-white"
             >
               <IconEdit />
-            </button>
+            </NuxtLink>
             <button
               class="p-2 rounded-sm bg-red-500 hover:bg-red-600 active:bg-red-700 text-white"
               @click="deletePost(id, title)"

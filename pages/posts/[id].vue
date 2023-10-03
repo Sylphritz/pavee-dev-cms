@@ -1,4 +1,4 @@
 <template>
-  <h2>New Post</h2>
+  <h2>Edit Post</h2>
   <PostForm />
 </template>

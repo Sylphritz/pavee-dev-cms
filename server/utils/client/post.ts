@@ -1,6 +1,10 @@
 import { posts } from '@/server/db/schema'
 import { eq, sql } from 'drizzle-orm'
-import { DataListInputProps, PostCreateInputProps } from './types'
+import {
+  DataInputProps,
+  DataListInputProps,
+  PostCreateInputProps,
+} from './types'
 
 export const listPosts = async ({
   userId,
@@ -20,6 +24,12 @@ export const listPosts = async ({
         },
       },
     },
+  })
+}
+
+export const getPostById = async ({ itemId }: DataInputProps) => {
+  return await useDb().query.posts.findFirst({
+    where: eq(posts.id, itemId),
   })
 }
 

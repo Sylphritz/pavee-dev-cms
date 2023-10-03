@@ -45,8 +45,8 @@ const { value, errorMessage, validate } = useField<string | number>(
   }
 )
 
-const onChange = () => {
-  validate()
+const onChange = async () => {
+  await validate()
   emit('change', value)
 }
 </script>
