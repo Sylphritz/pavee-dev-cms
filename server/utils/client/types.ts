@@ -8,10 +8,15 @@ export interface DataListInputProps {
   userId: string
   page: number
   perPage: number
+  parentId?: number
 }
 
 export interface DataInputProps {
   itemId: number
+}
+
+export interface DataBySlugInputProps {
+  slug: string
 }
 
 export interface CategoryCreateInputProps {

@@ -22,6 +22,18 @@ export const listCategories = async ({
   })
 }
 
+export const getCategoryById = async ({ itemId }: DataInputProps) => {
+  return await useDb().query.categories.findFirst({
+    where: eq(categories.id, itemId),
+  })
+}
+
+export const getCategoryBySlug = async ({ slug }: DataBySlugInputProps) => {
+  return await useDb().query.categories.findFirst({
+    where: eq(categories.slug, slug),
+  })
+}
+
 export const createCategory = async (
   newCategoryValues: CategoryCreateInputProps
 ) => {
