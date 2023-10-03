@@ -15,6 +15,9 @@
     "passwordConfirm": "Password Confirm",
     "slug": "Slug",
     "description": "Description",
-    "sortOrder": "Sort Order"
+    "sortOrder": "Sort Order",
+    "title": "Title",
+    "metaDescription": "Meta Description",
+    "categoryId": "Category"
   }
 }

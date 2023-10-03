@@ -1,7 +1,4 @@
-import {
-  listCategories,
-  countTotalCategories,
-} from '@/server/utils/client/category'
+import { listPosts, countTotalPosts } from '@/server/utils/client/post'
 import { PaginationProps } from '@/server/utils/client/types'
 
 export default defineEventHandler(async (event) => {
@@ -9,11 +6,11 @@ export default defineEventHandler(async (event) => {
   const pagination: PaginationProps = {
     page: parseInt(query.page),
     perPage: parseInt(query.perPage),
-    total: await countTotalCategories(),
+    total: await countTotalPosts(),
   }
 
   return {
     pagination,
-    data: [...(await listCategories({ ...query }))],
+    data: [...(await listPosts({ ...query }))],
   }
 })

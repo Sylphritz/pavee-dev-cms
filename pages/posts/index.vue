@@ -1,58 +1,49 @@
 <template>
   <div class="flex flex-row justify-between items-end mb-6">
-    <h2 class="flex-grow m-0">Categories</h2>
+    <h2 class="flex-grow m-0">Posts</h2>
     <div class="flex-none">
-      <button
-        class="py-2 px-4 font-medium rounded-sm bg-purple-500 hover:bg-purple-600 active:bg-purple-700 text-white hover:text-white"
-        @click="openForm()"
+      <NuxtLink
+        class="inline-block py-2 px-4 font-medium rounded-sm bg-purple-500 hover:bg-purple-600 active:bg-purple-700 text-white hover:text-white"
+        to="/posts/create"
       >
-        New Category
-      </button>
+        New Post
+      </NuxtLink>
     </div>
   </div>
   <div class="flex flex-col gap-2">
     <Table>
       <template #header>
         <th>ID</th>
-        <th>Order</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Description</th>
-        <th>Posts</th>
+        <th>Title (Slug)</th>
+        <th>Category</th>
         <th>Created At (UTC)</th>
+        <th>Updated At (UTC)</th>
         <th>Actions</th>
       </template>
       <tr
         v-if="data"
-        v-for="{
-          id,
-          name,
-          slug,
-          description,
-          sortOrder,
-          createdAt,
-          postCount,
-        } in data.data"
+        v-for="{ id, title, slug, category, createdAt, updatedAt } in data.data"
         :key="id"
       >
         <td>{{ id }}</td>
-        <td>{{ sortOrder }}</td>
-        <td>{{ name }}</td>
-        <td>{{ slug }}</td>
-        <td>{{ description }}</td>
-        <td>{{ postCount }}</td>
+        <td>
+          {{ title }}<br />
+          ({{ slug }})
+        </td>
+        <td>{{ category?.name }}</td>
         <td>{{ createdAt }}</td>
+        <td>{{ updatedAt }}</td>
         <td>
           <div class="flex flex-row gap-2">
-            <button
-              class="p-2 rounded-sm bg-green-600 hover:bg-green-700 active:bg-green-800 text-white"
-              @click="openForm({ id, name, slug, description, sortOrder })"
+            <NuxtLink
+              :to="`/posts/${id}`"
+              class="inline-block p-2 rounded-sm bg-green-600 hover:bg-green-700 active:bg-green-800 text-white"
             >
               <IconEdit />
-            </button>
+            </NuxtLink>
             <button
               class="p-2 rounded-sm bg-red-500 hover:bg-red-600 active:bg-red-700 text-white"
-              @click="deleteCategory(id, name)"
+              @click="deletePost(id, title)"
             >
               <IconDelete />
             </button>
@@ -67,19 +58,10 @@
       @next-page="page += 1"
     />
   </div>
-  <CategoryForm
-    v-if="formOpen"
-    @close="formOpen = false"
-    @category-added="reloadTable"
-    :data="formData"
-  />
 </template>
 
 <script lang="ts" setup>
 const { $auth } = useNuxtApp()
-
-const formOpen = ref(false)
-const formData = ref<object | undefined>({})
 
 const page = ref(1)
 const perPage = 10
@@ -88,7 +70,7 @@ const totalItems = ref(0)
 const totalPages = computed(() => Math.ceil(totalItems.value / perPage) || 1)
 
 const { data, pending, error, refresh, execute } = await useFetch(
-  '/api/v1/categories',
+  '/api/v1/posts',
   {
     query: {
       userId: $auth.currentUser!.uid,
@@ -103,23 +85,13 @@ const { data, pending, error, refresh, execute } = await useFetch(
   }
 )
 
-const reloadTable = async () => {
-  await refresh()
-  formOpen.value = false
-}
-
-const openForm = (newData?: object) => {
-  formData.value = newData
-  formOpen.value = true
-}
-
-const deleteCategory = async (categoryId: number, name: string) => {
+const deletePost = async (postId: number, name: string) => {
   if (confirm(`Are you sure you want to delete ${name}?`)) {
-    await $fetch(`/api/v1/categories/${categoryId}`, {
+    await $fetch(`/api/v1/posts/${postId}`, {
       method: 'DELETE',
     })
 
-    reloadTable()
+    await refresh()
   }
 }
 </script>
