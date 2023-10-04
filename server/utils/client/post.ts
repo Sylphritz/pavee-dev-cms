@@ -23,6 +23,7 @@ export const listPosts = async ({
       category: {
         columns: {
           name: true,
+          slug: true,
           description: true,
         },
       },
@@ -39,6 +40,15 @@ export const getPostById = async ({ itemId }: DataInputProps) => {
 export const getPostBySlug = async ({ slug }: DataBySlugInputProps) => {
   return await useDb().query.posts.findFirst({
     where: eq(posts.slug, slug),
+    with: {
+      category: {
+        columns: {
+          name: true,
+          slug: true,
+          description: true,
+        },
+      },
+    },
   })
 }
 
