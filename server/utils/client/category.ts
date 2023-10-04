@@ -1,6 +1,6 @@
 import { categories, posts } from '@/server/db/schema'
 import { CategoryCreateInputProps, DataListInputProps } from './types'
-import { eq, sql } from 'drizzle-orm'
+import { desc, eq, sql } from 'drizzle-orm'
 
 export const listCategories = async ({
   userId,
@@ -13,6 +13,7 @@ export const listCategories = async ({
     offset,
     limit: perPage,
     where: eq(categories.userId, userId),
+    orderBy: [desc(categories.createdAt)],
     extras: (category, { sql }) => ({
       postCount:
         sql`(SELECT count(*) from ${posts} WHERE ${posts.categoryId} = ${categories}.${categories.id})`.as(
