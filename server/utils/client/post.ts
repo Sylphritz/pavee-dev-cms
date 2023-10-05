@@ -1,5 +1,5 @@
 import { posts } from '@/server/db/schema'
-import { eq, sql } from 'drizzle-orm'
+import { desc, eq, sql } from 'drizzle-orm'
 import {
   DataBySlugInputProps,
   DataInputProps,
@@ -19,10 +19,12 @@ export const listPosts = async ({
     offset,
     limit: perPage,
     where: parentId ? eq(posts.categoryId, parentId) : eq(posts.userId, userId),
+    orderBy: [desc(posts.createdAt)],
     with: {
       category: {
         columns: {
           name: true,
+          slug: true,
           description: true,
         },
       },
@@ -39,6 +41,15 @@ export const getPostById = async ({ itemId }: DataInputProps) => {
 export const getPostBySlug = async ({ slug }: DataBySlugInputProps) => {
   return await useDb().query.posts.findFirst({
     where: eq(posts.slug, slug),
+    with: {
+      category: {
+        columns: {
+          name: true,
+          slug: true,
+          description: true,
+        },
+      },
+    },
   })
 }
 
