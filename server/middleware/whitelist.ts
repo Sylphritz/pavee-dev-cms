@@ -1,6 +1,5 @@
 export default defineEventHandler((event) => {
   const origin = getRequestHeader(event, 'origin')
-  // console.log(event.path.startsWith('/api/v1/'))
 
   // TODO: Update the code to not allow access when there's no origin
   if (event.path.startsWith('/api/v1/') && origin) {
