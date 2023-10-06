@@ -22,6 +22,7 @@ export default defineNuxtConfig({
   test: true,
   runtimeConfig: {
     dbDir: resolve('./server/db'),
+    frontendDeployHookUrl: process.env.NUXT_FRONTEND_DEPLOY_HOOK_URL || '',
     tursoDbUrl: process.env.NUXT_TURSO_DB_URL || '',
     tursoDbToken: process.env.NUXT_TURSO_DB_TOKEN || '',
     public: {
