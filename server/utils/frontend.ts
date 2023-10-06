@@ -1,7 +1,9 @@
 export const triggerDeployHook = async () => {
-  const config = useAppConfig()
+  const config = useRuntimeConfig()
 
-  return await $fetch(config.frontendDeployHookUrl, {
-    method: 'POST',
-  })
+  if (config.frontendDeployHookUrl) {
+    return await $fetch(config.frontendDeployHookUrl, {
+      method: 'POST',
+    })
+  }
 }
