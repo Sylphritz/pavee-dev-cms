@@ -1,75 +1,16 @@
-# Nuxt 3 Minimal Starter
+# Nuxt.js Headless CMS for [Pavee.dev](https://pavee.dev)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is my custom headless CMS built from scratch with Nuxt.js for personal use with my portfolio/blog website at https://pavee.dev
 
-## Setup
+There are **no demo available publicly**. I'm sorry. This is for internal use only. I only made the code available so those looking to learn could take a look.
 
-Make sure to install the dependencies:
+## Tools & Technologies
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- **Front-end framework:** Nuxt.js
+  - Pinia, Vee-Validate
+- **Styling:** SCSS, TailwindCSS
+- **User authentication:** Firebase
+- **Image storage:** https://imgcdn.dev
+- **Database:** Turso SQLite (with Drizzle ORM)
+- **Hosting:** Cloudflare Pages/Workers
+- **Others:** Fontsource, Marked, DOMPurify
