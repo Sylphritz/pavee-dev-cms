@@ -13,26 +13,18 @@ export default defineNuxtPlugin((nuxtApp) => {
     measurementId: appConfig.public.firebaseMeasurementId,
   }
 
-  // console.log(firebaseConfig)
-
   // Initialize Firebase
   const app = initializeApp(firebaseConfig)
   const auth = getAuth(app)
   const initialized = ref(false)
 
   async function checkAuthState() {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      initialized.value = true
-    })
-
     return new Promise<void>((resolve) => {
-      const interval = setInterval(() => {
-        if (initialized.value) {
-          clearInterval(interval)
-          unsubscribe()
-          resolve()
-        }
-      }, 50)
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        initialized.value = true
+        unsubscribe()
+        resolve()
+      })
     })
   }
 

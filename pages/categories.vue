@@ -76,6 +76,11 @@
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+  protected: true,
+  title: 'Categories',
+})
+
 const { $auth } = useNuxtApp()
 
 const formOpen = ref(false)

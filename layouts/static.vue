@@ -13,9 +13,11 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-useHead({
-  title: route.meta.title,
-  meta: [{ name: 'robots', content: 'noindex,follow' }],
+watchEffect(() => {
+  useHead({
+    title: route.meta.title,
+    meta: [{ name: 'robots', content: 'noindex,follow' }],
+  })
 })
 </script>
 
