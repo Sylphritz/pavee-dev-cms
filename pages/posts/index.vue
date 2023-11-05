@@ -61,6 +61,11 @@
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+  protected: true,
+  title: 'Posts',
+})
+
 const { $auth } = useNuxtApp()
 
 const page = ref(1)

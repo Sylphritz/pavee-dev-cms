@@ -5,7 +5,6 @@
 <script lang="ts" setup>
 definePageMeta({
   protected: true,
+  title: 'Dashboard',
 })
 </script>
-
-<style></style>

@@ -23,9 +23,11 @@ const { $auth } = useNuxtApp()
 
 const route = useRoute()
 
-useHead({
-  title: route.meta?.title || 'Dashboard',
-  meta: [{ name: 'robots', content: 'noindex,follow' }],
+watchEffect(() => {
+  useHead({
+    title: route.meta?.title || 'Dashboard',
+    meta: [{ name: 'robots', content: 'noindex,follow' }],
+  })
 })
 </script>
 
