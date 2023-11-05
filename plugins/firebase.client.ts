@@ -21,18 +21,12 @@ export default defineNuxtPlugin((nuxtApp) => {
   const initialized = ref(false)
 
   async function checkAuthState() {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      initialized.value = true
-    })
-
     return new Promise<void>((resolve) => {
-      const interval = setInterval(() => {
-        if (initialized.value) {
-          clearInterval(interval)
-          unsubscribe()
-          resolve()
-        }
-      }, 50)
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        initialized.value = true
+        unsubscribe()
+        resolve()
+      })
     })
   }
 
